@@ -27,3 +27,4 @@ I am making head way
 As:front end page almost done but some page fixing error still there.
 
 jj:working on front end page fixing
+I am working on the Laravel framework and Wamp Local server
