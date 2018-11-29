@@ -25,3 +25,5 @@ No content added today
 I am trying to run the code locally, however is giving some error that I need to debug before pushing to git hub
 I am making head way 
 As:front end page almost done but some page fixing error still there.
+
+working on front end page fixing
