@@ -49,7 +49,7 @@
 
                                     </ul><!-- /.submenu -->
                                 </li>
-                                <li><a href="login.html" class="btn btn-primary btn-join btn-create">Login</a></li>
+                                <li><a href="{{url('login')}}" class="btn btn-primary btn-join btn-create">Login</a></li>
 
 
 
