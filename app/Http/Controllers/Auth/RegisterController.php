@@ -50,8 +50,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+            'age' => 'integer|min:18',
+            'password' => 'required|string|confirmed',
+        ],
+            $messages = [
+                'age.min' => 'Please note that the minimum registration age for Medicare is 18',
+            ]);
     }
 
     /**
@@ -62,9 +66,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if(isset($data['age'])){
+            $age = $data['age'];
+        }else{
+            $age = null;
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'age' => $age,
+            'user_type' => $data['user_type'],
             'password' => bcrypt($data['password']),
         ]);
     }
