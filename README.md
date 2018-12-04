@@ -30,3 +30,5 @@ jj:working on front end page fixing
 I am working on the Laravel framework and Wamp Local server
 
 jj:I created my local server to be able to work locally and also created a Usercontroller class to help with development as guided by the framework tutorial
+
+jj:some edits in work
