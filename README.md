@@ -34,3 +34,5 @@ jj:I created my local server to be able to work locally and also created a Userc
 jj:some edits in work
 
 B.D :I am working on Pharmacy signup and dashboard
+
+As: working on domain and hosting
