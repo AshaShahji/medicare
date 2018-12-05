@@ -58,7 +58,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </a>
-        <a class="navbar-brand" href="{{url('')}}"><h3 style="color: #fff">Medicare Portal</h3></a>
+        <a class="navbar-brand" href="{{url('')}}"><h4 style="color: #fff;">Medicare Portal</h4></a>
         <button class="navbar-toggler btn-icon" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa fa-ellipsis-v"></i>
         </button>
@@ -66,7 +66,11 @@
             <ul class="navbar-nav navbar-custom ml-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="">Browse Pharmacies</a>
+                    <a class="nav-link" href="">Manage Drugs Listed</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="">Subscribed Patients</a>
                 </li>
 
                 <li class="nav-item">
@@ -110,17 +114,17 @@
             <div class="row">
                 <div class="col-sm-12 col-lg-9">
                     <div class="row">
-                        <div class="col-sm-12 col-lg-4">
+                        <div class="col-sm-12 col-lg-6">
                             <div class="dashboard-content-wrapper">
                                 <a href="" class="">
                                     <div class="dashboard-item bg-blue">
                                         <div class="item-name">
-                                            <h5 class=""><i class="fa fa-tag"></i> My plans</h5>
+                                            <h5 class=""><i class="fa fa-tag"></i> Create new prescription</h5>
                                         </div>
                                         <div class="item-stat">
                                             <div class="stat no-br">
-                                                <p class="stat-count">Medicare Pharmacy </p>
-                                                <span class="">Anaesthesia Supply</span>
+
+                                                <span class="">Create new</span>
                                             </div>
                                             <!--  <div class="stat">
                                                <p class="stat-count">Bronze</p>

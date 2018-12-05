@@ -18,6 +18,8 @@ class UserController extends Controller
     }
 
     public function pharmacy_dashboard(){
-
+        $user = Auth::user();
+        $data['user'] = $user;
+        return view('pharmacy_dashboard',$data);
     }
 }
