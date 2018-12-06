@@ -39,3 +39,5 @@ As: working on domain and hosting
 
 
 AS: as we were working on domain name so today we subscribed for domain name that is lyfcareonline.com .we got an id and password which cost 12.46 euro.
+
+AS: working on admin view
