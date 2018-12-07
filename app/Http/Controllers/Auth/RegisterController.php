@@ -71,11 +71,17 @@ class RegisterController extends Controller
         }else{
             $age = null;
         }
+        if(isset($data['gender'])){
+            $gender = $data['gender'];
+        }else{
+            $gender = null;
+        }
 
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'age' => $age,
+            'gender' => $gender,
             'user_type' => $data['user_type'],
             'password' => bcrypt($data['password']),
         ]);

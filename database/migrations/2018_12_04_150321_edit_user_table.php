@@ -17,6 +17,7 @@ class EditUserTable extends Migration
             Schema::table('users', function (Blueprint $table) {
                 $table->string('age')->nullable();
                 $table->string('user_type')->nullable();
+                $table->string('gender')->nullable();
             });
         });
     }
