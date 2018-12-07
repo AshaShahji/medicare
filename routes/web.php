@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/logout', 'HomeController@logout');
+Route::get('login/google', 'GoogleController@redirectToProvider');
+Route::get('login/google/callback', 'GoogleController@handleProviderCallback');
 
 Auth::routes();
 

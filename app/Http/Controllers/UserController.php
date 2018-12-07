@@ -14,7 +14,7 @@ class UserController extends Controller
             return redirect('pharmacy-dashboard');
         }
         $data['user'] = $user;
-        return view('patient_dashboard',$data);
+        return view('patient-dashboard',$data);
     }
 
     public function pharmacy_dashboard(){

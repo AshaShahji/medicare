@@ -7,6 +7,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ucfirst($_GET['type'])}} Register</div>
 
+
+
+
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
@@ -46,6 +49,16 @@
                             </div>
 
                             @if(isset($_GET['type']) && $_GET['type'] == 'patient')
+
+                                <div class="form-group">
+                                    <label for="gender" class="col-md-4 control-label">Gender</label>
+
+                                    <div class="col-md-6">
+                                        <input id="gender" type="text" class="form-control" name="gender" value="{{ old('gender') }}" required>
+
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="age" class="col-md-4 control-label">Age</label>
 
@@ -81,14 +94,21 @@
                             </div>
 
                             <div class="form-group">
+
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
                                         Register
                                     </button>
+
                                 </div>
                             </div>
                         </form>
-                        <p>Already have an account? <a href="{{url('login')}}">Login</a> </p>
+
+                        <p>Already have an account? <a href="{{url('login')}}">Login</a>
+                            @if(isset($_GET['type']) && $_GET['type'] == 'patient')
+                                <a style="float: right" href="{{url('login/google')}}"><img src="{{url('/images/g-bt.png')}}" style="height: 40px"></a></p>
+
+                        @endif
                     </div>
                 </div>
             </div>
