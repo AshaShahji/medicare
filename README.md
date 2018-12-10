@@ -45,3 +45,5 @@ AS: working on admin view
 B.D: Uploading files on File manager of Godaddy hosting platform to test the project so far. 
 
 B.D: working on creating a paypal account with paypal and set up for the gatewaypayment.
+
+AS: working on paypal integration
