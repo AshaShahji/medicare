@@ -21,6 +21,9 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/home', 'UserController@index');
+    Route::get('/add-drug', 'UserController@add_drug');
+    Route::post('/add-drug', 'UserController@post_drug');
     Route::get('/pharmacy-dashboard', 'UserController@pharmacy_dashboard');
+    Route::get('/subscribed-users', 'UserController@subscribed_users');
 
 });

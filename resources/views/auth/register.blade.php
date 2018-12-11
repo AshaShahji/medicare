@@ -54,8 +54,11 @@
                                     <label for="gender" class="col-md-4 control-label">Gender</label>
 
                                     <div class="col-md-6">
-                                        <input id="gender" type="text" class="form-control" name="gender" value="{{ old('gender') }}" required>
-
+                                        <select name="gender" class="form-control" required>
+                                            <option value="">-- select --</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
                                     </div>
                                 </div>
 

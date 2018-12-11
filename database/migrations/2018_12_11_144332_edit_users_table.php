@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class EditUserTable extends Migration
+class EditUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,8 @@ class EditUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            Schema::table('users', function (Blueprint $table) {
-                $table->string('age')->nullable();
-                $table->string('user_type')->nullable();
-
-            });
+            $table->string('status')->nullable();
+            $table->string('gender')->nullable();
         });
     }
 
@@ -29,8 +26,6 @@ class EditUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }
