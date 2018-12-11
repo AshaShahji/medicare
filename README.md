@@ -47,3 +47,5 @@ B.D: Uploading files on File manager of Godaddy hosting platform to test the pro
 B.D: working on creating a paypal account with paypal and set up for the gatewaypayment.
 
 AS: working on paypal integration
+
+AS: added some drugs in the dashboard
