@@ -49,3 +49,6 @@ B.D: working on creating a paypal account with paypal and set up for the gateway
 AS: working on paypal integration
 
 AS: added some drugs in the dashboard
+
+
+B.D : Testing all the features of the live website, to ensure everything work as it should.
