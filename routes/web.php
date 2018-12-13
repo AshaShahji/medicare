@@ -27,3 +27,21 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/subscribed-users', 'UserController@subscribed_users');
 
 });
+
+
+Route::get('admin-login','AdminAuthController@login');
+Route::post('verify-admin','AdminAuthController@verify');
+
+
+Route::group(['middleware' => 'adminAccess'], function () {
+    Route::get('admin-home', 'AdminController@index');
+    Route::get('manage-pharmacies', 'AdminController@index');
+    Route::get('all-drugs', 'AdminController@drugs');
+    Route::post('activate-account', 'AdminController@activate_account');
+    Route::post('deactivate-account', 'AdminController@deactivate_account');
+    Route::get('view-store-drugs/{id}', 'AdminController@view_store_drugs');
+
+
+});
+
+
