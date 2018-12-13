@@ -43,4 +43,18 @@ class AdminController extends Controller
             ->get();
         return view('admin.drugs',$data);
     }
+    public function activate_drug(Request $request){
+        $drug = Drug::find($request->drug_id);
+        $drug->status = 'Active';
+        $drug->save();
+        return back()->with('status','Drug activated on the platform');
+    }
+
+    public function deactivate_drug(Request $request){
+        $drug = Drug::find($request->drug_id);
+        $drug->status = 'not Active';
+        $drug->save();
+        return back()->with('status','Drug deactivated on the platform');
+    }
+
 }

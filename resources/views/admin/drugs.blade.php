@@ -45,6 +45,9 @@
                                             <th>Dosage</th>
                                             <th>Expiry Date</th>
                                             <th>Added by</th>
+                                            <th>Status</th>
+                                            <th>Manage</th>
+
 
 
                                         </tr>
@@ -62,6 +65,31 @@
                                                 <td>
                                                     {{$drugs[$i]->name}}
                                                 </td>
+                                                @if($drugs[$i]->status <> 'Active')
+                                                    <td><span class="label label-warning">Not Active </span></td>
+                                                @else
+                                                    <td><span class="label label-success">Active </span></td>
+                                                @endif
+
+                                                @if($drugs[$i]->status <> 'Active')
+                                                    <td>
+                                                        <form method="post" action="{{url('activate-drug')}}">
+                                                            {{csrf_field()}}
+                                                            <input type="hidden" name="drug_id" value="{{$drugs[$i]->id}}" >
+                                                            <button type="submit" class="btn btn-block btn-success btn-sm">Activate Drug</button>
+                                                        </form>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <form method="post" action="{{url('deactivate-drug')}}">
+                                                            {{csrf_field()}}
+                                                            <input type="hidden" name="drug_id" value="{{$drugs[$i]->id}}" >
+
+                                                            <button type="submit" class="btn btn-block btn-danger btn-sm">Deactivate Drug</button>
+                                                        </form>
+                                                    </td>
+                                                @endif
+
                                             </tr>
                                         @endfor
 

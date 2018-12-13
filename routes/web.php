@@ -39,6 +39,9 @@ Route::group(['middleware' => 'adminAccess'], function () {
     Route::get('all-drugs', 'AdminController@drugs');
     Route::post('activate-account', 'AdminController@activate_account');
     Route::post('deactivate-account', 'AdminController@deactivate_account');
+    Route::post('activate-drug', 'AdminController@activate_drug');
+    Route::post('deactivate-drug', 'AdminController@deactivate_drug');
+
     Route::get('view-store-drugs/{id}', 'AdminController@view_store_drugs');
 
 
