@@ -56,3 +56,5 @@ B.D : Testing all the features of the live website, to ensure everything work as
 AS: live website running, more work to be get done
 
 B.D : Paypal integration on course, however is not working yet. I need to check some codes and bracket.
+
+AS: paypal integration, work on progress 
