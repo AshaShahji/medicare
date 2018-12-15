@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <head>
@@ -13,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{url('')}}/stylesheets/mine.css">
     <link rel="stylesheet" type="text/css" href="{{url('')}}/stylesheets/responsive.css">
     <link rel="stylesheet" type="text/css" href="{{url('')}}/stylesheets/animate.css">
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <link href="{{url('')}}/images/favicon.png" rel="shortcut icon">
 </head>
 <body class="header-sticky">
@@ -41,7 +41,6 @@
                             </li>
 
 
-
                             </li>
                             <li class="has-sub"><a href="">SIGN UP</a>
                                 <ul class="submenu">
@@ -66,31 +65,83 @@
         </div>
     </header><!-- /.header -->
 
-    <!--banner starts-->
-    <div class="jumbotron welcome text-white text-center">
-        <h1 style="" class="display-5 text-center mt-5 mb-5">Welcome to Medicare</h1>
-        <p class="mt-5 mb-5">
-            <a class="btn btn-danger btn-lg" href="{{url('browse-drugs')}}" role="button">Start Searching   <span class="ml-3 fa fa-angle-right"></span></a>
-        </p>
+
+    <section class="main-content blog-posts course-single" style="padding: 0px 0 !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="blog-title-single">
+                        <h1 class="bold">{{$drugs[0]->drug_name}}</h1>
+
+
+                        <div class="course-widget-price">
+
+                            <div class="feature-post">
+                                <img src="{{Storage::url($drugs[0]->image_path)}}" alt="image">
+                            </div><!-- /.feature-post -->
+                            <ul>
+                                <li>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span> Store: </span>
+                                    <span class="time">{{$drugs[0]->name}}</span>
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                    <span>Price</span>
+                                    <span class="time">€{{$drugs[0]->price}}</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    <span>Expiry Date</span>
+                                    <span class="time">{{$drugs[0]->expiry_date}}</span>
+                                </li>
+                                <li>
+                                    <div class="well">You can book this drug by making payment online and just walk in to the store at your convenience to pick up</div>
+
+                                </li>
+
+                                @if(Auth::check())
+                                    <li>
+                                        <p>
+                                        <div id="paypal-button"></div>
+                                        <p>
+                                    </li>
+                                @else
+                                    <li>
+                                    <li><a href="{{url('login')}}" class="btn btn-primary btn-join btn-create">Login to purchase</a></li>
+
+                                    </li>
+                                @endif
+
+
+
+                            </ul>
+                        </div>
+                        <div class="entry-content">
+                            <h4 class="title-1 bold">Dosage Description</h4>
+                            {!! $drugs[0]->dosage !!}
+
+                        </div><!-- /.entry-post -->
+                    </div><!-- /.main-post -->
+                </div><!-- /col-md-8 -->
+
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section><!-- /main-content -->
+
+    <div class="text-center mb-5">
+
     </div>
-    <!--banner ends-->
+    <!--scholarships ends-->
 
-
-
-
-
-
-
-
-    <!-- Bottom -->
-    <div class="bottom" style="margin-top: -67px; background-color: #d9534f;  !important;">
+    <div class="bottom" style="margin-top: 40px !important;">
         <div class="container">
 
             <div class="row">
                 <div class="container-bottom">
                     <div class="copyright">
-                        <p style="color: #FFF">Medicare Copyright © 2018 </p>
-                        <a style="color: #FFF" href="{{url('admin-login')}}">Admin Login</a></p>
+                        <p>Medicare  © 2018</p>
                     </div>
                 </div><!-- /.container-bottom -->
             </div><!-- /.row -->
@@ -110,6 +161,37 @@
 <script type="text/javascript" src="{{url('')}}/javascript/jquery.cookie.js"></script>
 <script type="text/javascript" src="{{url('')}}/javascript/jquery-validate.js"></script>
 <script type="text/javascript" src="{{url('')}}/javascript/main.js"></script>
+
+<script>
+    paypal.Button.render({
+
+        env: 'sandbox',
+        commit: true,
+
+        payment: function() {
+            var CREATE_URL = '{{url('paypal/checkout')}}';
+            return paypal.request.post(CREATE_URL)
+                .then(function(res) {
+                    return res.id;
+                });
+        },
+
+        onAuthorize: function(data, actions) {
+            var EXECUTE_URL = '{{url('paypal/execute')}}';
+            var data = {
+                paymentID: data.paymentID,
+                payerID: data.payerID
+            };
+            return paypal.request.post(EXECUTE_URL, data)
+                .then(function (res) {
+                    window.location = "{{url('home?payment=success')}}";
+
+                });
+        }
+
+    }, '#paypal-button');
+</script>
+
 
 </body>
 

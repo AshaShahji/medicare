@@ -32,6 +32,14 @@
                                 </div>
                             @endif
 
+                            @if (session('success_status'))
+                                <div class="alert alert-success">
+                                    {{session('success_status')}}
+                                </div>
+                            @endif
+
+
+
                             @if (session('error_status'))
                                 <div class="alert alert-danger">
                                     {{session('error_status')}}
@@ -54,8 +62,8 @@
                                         <tr>
                                             <th>Drug Name</th>
                                             <th>Expiry Date</th>
+                                            <th>Price</th>
                                             <th>Status</th>
-                                            <th>Subscribed patients</th>
 
                                         </tr>
                                         </thead>
@@ -65,15 +73,13 @@
                                             <tr>
                                                 <td><a href="#">{{$drug->drug_name}}</a></td>
                                                 <td>{{$drug->expiry_date}}</td>
-                                                @if($drug->status == 'Pending')
-                                                    <td><span class="label label-warning">Pending </span></td>
+                                                <td>€ {{$drug->price}}</td>
+                                                @if($drug->status <> 'Active')
+                                                    <td><span class="label label-warning">Not Approved </span></td>
                                                 @else
                                                     <td><span class="label label-success">Active </span></td>
                                                 @endif
-                                                <td>
-                                                    <button class="btn btn-default ">View subscribers </button>
 
-                                                </td>
 
                                             </tr>
                                         @endforeach

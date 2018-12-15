@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class EditUsersTable extends Migration
+class EditDrugsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class EditUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('status')->nullable();
-            $table->string('gender')->nullable();
+        Schema::table('drugs', function (Blueprint $table) {
+            $table->integer('price')->after('expiry_date');
         });
     }
 
@@ -26,6 +25,8 @@ class EditUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('drugs', function (Blueprint $table) {
+            //
+        });
     }
 }

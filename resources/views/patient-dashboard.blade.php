@@ -39,7 +39,6 @@
         <!-- Logo -->
         <a href="{{url('')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Medicare</b></span>
         </a>
@@ -73,7 +72,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{url('home')}}"><i class="fa fa-circle-o"></i> Dashboard</a></li>
-                        <li><a href="{{url('browse-pharmacies')}}"><i class="fa fa-circle-o"></i> Browse Pharmacies</a></li>
+                        <li><a href="{{url('browse-drugs')}}"><i class="fa fa-circle-o"></i> Browse Drugs</a></li>
                         <li><a href="{{url('logout')}}"><i class="fa fa-key"></i> Logout</a></li>
                     </ul>
                 </li>
@@ -108,6 +107,13 @@
                     <!-- TABLE: LATEST ORDERS -->
                     <div class="box box-info">
                         <div class="box-header with-border">
+
+                            @if (isset($payment_success))
+                                <div class="alert alert-success">
+                                    {{$payment_success}}
+                                </div>
+                            @endif
+
                             <h3 class="box-title">Subscribed Plans</h3>
 
                             <div class="box-tools pull-right">
@@ -119,32 +125,46 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="table-responsive">
-                                <table class="table no-margin">
-                                    <thead>
-                                    <tr>
-                                        <th>Order ID</th>
-                                        <th>Item</th>
-                                        <th>Status</th>
+                                @if(count($subscriptions) > 0)
+                                    <table class="table no-margin">
+                                        <thead>
+                                        <tr>
+                                            <th>Drug name</th>
+                                            <th>Price</th>
+                                            <th>Status</th>
 
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="#">Medlife Pharmacy</a></td>
-                                        <td>Novartis</td>
-                                        <td><span class="label label-success">subscribed </span></td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
 
-                                    </tr>
+                                        @foreach($subscriptions as $sub)
+                                            <tr>
+                                                <td><a href="">{{$sub->drug_name}}</a></td>
+                                                <td>€{{$sub->price}}</td>
+                                                <td>
+                                                    @if($sub->sstatus == 'Active')
+                                                        <span class="label label-success">Active Subscription </span>
+                                                    @else
+                                                        <span class="label label-warning">subscription used </span>
+                                                    @endif
+                                                </td>
 
-                                    </tbody>
-                                </table>
+                                            </tr>
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <div class="well">
+                                        You currently have no drug subscription at the moment
+                                    </div>
+                                @endif
                             </div>
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                            <a href="{{url('browse-drugs')}}" class="btn btn-sm btn-default btn-flat pull-right">Browse Drugs</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -152,44 +172,6 @@
                 </div>
                 <!-- /.col -->
 
-                <div class="col-md-4">
-                    <!-- Info Boxes Style 2 -->
-                    <div class="info-box bg-yellow">
-                        <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Available Stores</span>
-                            <span class="info-box-number">5,200</span>
-
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 50%"></div>
-                            </div>
-                            <span class="progress-description">
-                        Certified Pharmacy stores
-                  </span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                    <div class="info-box bg-green">
-                        <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">My Subscriptions</span>
-                            <span class="info-box-number">2</span>
-
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 20%"></div>
-                            </div>
-                            <span class="progress-description">
-                    currently subscribed to 2 plans
-                  </span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-
-                </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->

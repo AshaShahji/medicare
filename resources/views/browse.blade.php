@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <head>
@@ -41,7 +40,6 @@
                             </li>
 
 
-
                             </li>
                             <li class="has-sub"><a href="">SIGN UP</a>
                                 <ul class="submenu">
@@ -66,31 +64,88 @@
         </div>
     </header><!-- /.header -->
 
-    <!--banner starts-->
-    <div class="jumbotron welcome text-white text-center">
-        <h1 style="" class="display-5 text-center mt-5 mb-5">Welcome to Medicare</h1>
-        <p class="mt-5 mb-5">
-            <a class="btn btn-danger btn-lg" href="{{url('browse-drugs')}}" role="button">Start Searching   <span class="ml-3 fa fa-angle-right"></span></a>
-        </p>
+
+    <!--scholarships starts-->
+    <div class ="flat-row popular-course">
+        <div class="container">
+            <div class="flat-title-section">
+                <h1 class="title">Browse Drugs</h1>
+
+
+                <div class="navbar-search" style="width:60%; margin-top: 10px">
+                    <form method="get" action="{{url('search-drug')}}">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="form-group has-feedback">
+                                    <input type="text" class="form-control" name="drug_name" placeholder="search by drug name" id="inputSuccess5">
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary btn-accent" type="submit">  <i class="fa fa-search"></i> Search</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+
+            <div class="flat-course-grid button-right">
+                @forelse($drugs as $drug)
+                    <div class="flat-course" style="width: 300px !important; margin-right: 5px !important;">
+                        <div class="featured-post">
+                            <div class="overlay">
+                                <div class="link"></div>
+                            </div>
+
+
+                            <a href="{{url('details/'.$drug->id)}}"><img src="{{Storage::url($drug->image_path)}}" alt=""></a>
+                        </div><!-- /.featured-post -->
+
+                        <div class="course-content">
+                            <h4><a href="{{url('details/'.$drug->id)}}">{{$drug->drug_name}}</a> </h4>
+
+                            {{--<p> &#8358;{{str_limit($drug->)}}</p>--}}
+
+                            <ul class="course-meta desc list">
+                                <li>
+                                    <h6>€{{$drug->price}}</h6>
+                                    <span> Price </span>
+                                </li>
+
+
+
+                                <li>
+                                    <h6><span class="course-time">{{$drug->name}}</span></h6>
+                                    <span>Listed by</span>
+                                </li>
+                            </ul>
+                            <a class="btn btn-danger btn-sm" href="{{url('details/'.$drug->id)}}" role="button">View   <span class="ml-3 fa fa-angle-right"></span></a>
+
+                            {{--<button class="btn btn-danger form-">view</button>--}}
+                        </div><!-- /.course-content -->
+                    </div>
+                @empty
+                    <div class="well">No drugs available on the site at the moment.</div>
+                @endforelse
+
+
+            </div><!-- /.flat-course grid -->
+        </div>
     </div>
-    <!--banner ends-->
 
+    <div class="text-center mb-5">
 
+    </div>
+    <!--scholarships ends-->
 
-
-
-
-
-
-    <!-- Bottom -->
-    <div class="bottom" style="margin-top: -67px; background-color: #d9534f;  !important;">
+    <div class="bottom" style="margin-top: 40px !important;">
         <div class="container">
 
             <div class="row">
                 <div class="container-bottom">
                     <div class="copyright">
-                        <p style="color: #FFF">Medicare Copyright © 2018 </p>
-                        <a style="color: #FFF" href="{{url('admin-login')}}">Admin Login</a></p>
+                        <p>Medicare  © 2018</p>
                     </div>
                 </div><!-- /.container-bottom -->
             </div><!-- /.row -->

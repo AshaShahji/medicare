@@ -142,6 +142,11 @@
                                     <input type="date" class="form-control" name="expiry_date">
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="">Price</label>
+                                    <input type="number" class="form-control" name="price" placeholder="€">
+                                </div>
+
                             </div>
                             <!-- /.box-body -->
 

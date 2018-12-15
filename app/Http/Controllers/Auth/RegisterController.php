@@ -76,7 +76,6 @@ class RegisterController extends Controller
         }else{
             $gender = null;
         }
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
